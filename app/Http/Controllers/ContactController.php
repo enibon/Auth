@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
-use Illuminate\Auth\Events\Validated;
-use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
