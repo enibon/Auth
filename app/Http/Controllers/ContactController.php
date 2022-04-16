@@ -15,7 +15,7 @@ class ContactController extends Controller
     
      $fields = $request->validated();
 
-      $contact = Contact::create($fields->all([
+      $contact = Contact::create($request->all([
 
         'name' => $fields['name'],
         'email' => $fields['email'],
