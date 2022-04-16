@@ -8,14 +8,14 @@ use App\Http\Requests\ContactRequest;
 class ContactController extends Controller
 {
    public function contact(){
-    return view('contact.show');
+    return view('contact.index');
    }
 
    public function store(ContactRequest $request){
     
      $fields = $request->validated();
 
-      $contact = Contact::create($request->all([
+      $contact = Contact::create($fields->all([
 
         'name' => $fields['name'],
         'email' => $fields['email'],
@@ -24,7 +24,7 @@ class ContactController extends Controller
         'message' => $fields['message']
 
       ]));
-
+      
       if(!$contact){
         return redirect()->back()->with(['fail' => 'გთხოვთ თავიდან სცადოთ']);
       }
