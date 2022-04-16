@@ -9,7 +9,6 @@
     <script src="https://kit.fontawesome.com/d125b03f12.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
-
 <body>
     <div class="wrapper">
         <header>Send us a message</header>
