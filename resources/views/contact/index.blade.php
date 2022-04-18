@@ -9,14 +9,15 @@
     <script src="https://kit.fontawesome.com/d125b03f12.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+
 <body>
-    <h1>Contact Us</h1>
+    <h1>Contact</h1>
     <div class="wrapper">
         @if(Session::has('success'))
-        <p class="alert alert-success">{{ Session::get('success') }}</p>
+        <p class="alert alert-success" style="color:green">{{ Session::get('success') }}</p>
         @endif
         @if(Session::has('fail'))
-        <p class="alert alert-danger">{{ Session::get('fail') }}</p>
+        <p class="alert alert-danger" style="color:red">{{ Session::get('fail') }}</p>
         @endif
         <form action="{{ route('contact.store') }}" method="POST">
             @csrf
