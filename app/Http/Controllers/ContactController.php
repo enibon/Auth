@@ -16,8 +16,7 @@ class ContactController extends Controller
     
      $fields = $request->validated();
 
-     dd($fields);
-      $contact = Contact::create(([
+      $contact = Contact::create([
 
         'name' => $fields['name'],
         'email' => $fields['email'],
@@ -25,18 +24,12 @@ class ContactController extends Controller
         'website' => $fields['website'],
         'message' => $fields['message']
 
-      ]));
-
-      dd($contact->save());
-
+      ]);
     
-      if($contact){
-        session()->flash('success', 'თქვენი მესიჯი წარმატებით გაიგზავნა!');
-        return view('contact.index');
-      }else {
-      session()->flash('success', 'გთხოვთ თავიდან სცადოთ');
-      return redirect()->back();
+      if(!$contact){
+       return back()->with('fail', 'გთხოვთ თავიდან სცადოთ');
    } 
+       return redirect()->route('contact.show');
   }
 
 }
