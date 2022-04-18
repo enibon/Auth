@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/register', 'register')->name('register.show');
+    Route::post('/register', 'registerUser')->name('register.store');
+    Route::get('/login', 'login')->name('login.show');
+    Route::post('/login', 'loginUser')->name('login.signup');
+});
 
 Route::get('/', [ContactController::class, 'contact'])->name('contact.show');
 Route::POST('/contact', [ContactController::class, 'store'])->name('contact.store');
