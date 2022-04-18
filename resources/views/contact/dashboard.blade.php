@@ -8,5 +8,8 @@
 </head>
 <body>
     Welcome! 
+        <a href="{{route('logout.user')}}">
+            Logout
+        </a>
 </body>
 </html>
