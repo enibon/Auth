@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use App\Http\Requests\ContactRequest;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -12,24 +11,28 @@ class ContactController extends Controller
     return view('contact.index');
    }
 
-   public function store(ContactRequest $request){
-    
-     $fields = $request->validated();
+   public function store(Request $request){
 
+     $validator = Validator::make($request->all(), [
+      'name' => 'required',
+      'email' => 'required|email|',
+      'phone' => 'required|numeric',
+      'website' => 'required|url',
+      'message' => 'required',
+]);
       $contact = Contact::create([
-
-        'name' => $fields['name'],
-        'email' => $fields['email'],
-        'phone' => $fields['phone'],
-        'website' => $fields['website'],
-        'message' => $fields['message']
+        'name' => $request['name'],
+        'email' => $request['email'],
+        'phone' => $request['phone'],
+        'website' => $request['website'],
+        'message' => $request['message']
 
       ]);
     
       if(!$contact){
-       return back()->with('fail', 'გთხოვთ თავიდან სცადოთ');
-   } 
-       return redirect()->route('contact.show');
+       session()->flash('fail', 'გთხოვთ თავიდან სცადოთ');
+      } 
+       return back()->with('success', 'თქვენი მესიჯი წარმატებით გაიგზავნა');
   }
 
 }

@@ -10,13 +10,14 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Contact Us</h1>
     <div class="wrapper">
-           @if(Session::has('success'))
-             <p class="alert alert-success">{{ Session::get('success') }}</p>
-              @endif
-              @if(Session::has('fail'))
-             <p class="alert alert-danger">{{ Session::get('fail') }}</p>
-              @endif
+        @if(Session::has('success'))
+        <p class="alert alert-success">{{ Session::get('success') }}</p>
+        @endif
+        @if(Session::has('fail'))
+        <p class="alert alert-danger">{{ Session::get('fail') }}</p>
+        @endif
         <form action="{{ route('contact.store') }}" method="POST">
             @csrf
             <div class="dbl-field">
@@ -24,14 +25,14 @@
                     <input type="text" name="name" placeholder="Enter your name">
                     <i class="fas fa-user "></i>
                     @error('name')
-              <div class="alert alert-danger" style="color:red">{{ $message }}</div>
+                    <div class="alert alert-danger" style="color:red">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="field">
                     <input type="text" name="email" placeholder="Enter your email">
                     <i class="fas fa-envelope"></i>
                     @error('email')
-              <div class="alert alert-danger" style="color:red">{{ $message }}</div>
+                    <div class="alert alert-danger" style="color:red">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
@@ -40,26 +41,28 @@
                     <input type="text" name="phone" placeholder="Enter your phone">
                     <i class="fas fa-phone-alt"></i>
                     @error('phone')
-              <div class="alert alert-danger" style="color:red">{{ $message }}</div>
+                    <div class="alert alert-danger" style="color:red">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="field">
                     <input type="text" name="website" placeholder="Enter your website">
                     <i class="fas fa-globe"></i>
                     @error('website')
-              <div class="alert alert-danger" style="color:red">{{ $message }}</div>
+                    <div class="alert alert-danger" style="color:red">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="message">
                 <textarea placeholder="Write your message" name="message"></textarea>
                 @error('message')
-              <div class="alert alert-danger" style="color:red">{{ $message }}</div>
-                    @enderror
+                <div class="alert alert-danger" style="color:red">{{ $message }}</div>
+                @enderror
             </div>
             <div class="button-area">
                 <button type="submit" value="submit">Send Message</button>
+            </div>
         </form>
-        </div>
+
 </body>
+
 </html>
