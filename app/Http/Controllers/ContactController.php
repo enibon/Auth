@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
+use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
@@ -15,7 +16,8 @@ class ContactController extends Controller
     
      $fields = $request->validated();
 
-      $contact = Contact::create($request->all([
+     dd($fields);
+      $contact = Contact::create(([
 
         'name' => $fields['name'],
         'email' => $fields['email'],
@@ -24,11 +26,17 @@ class ContactController extends Controller
         'message' => $fields['message']
 
       ]));
-      
-      if(!$contact){
-        return redirect()->back()->with(['fail' => 'გთხოვთ თავიდან სცადოთ']);
-      }
-      return redirect()->back()->with(['success' => 'თქვენი მესიჯი წარმატებით გაიგზავნა!']);
-   }
+
+      dd($contact->save());
+
+    
+      if($contact){
+        session()->flash('success', 'თქვენი მესიჯი წარმატებით გაიგზავნა!');
+        return view('contact.index');
+      }else {
+      session()->flash('success', 'გთხოვთ თავიდან სცადოთ');
+      return redirect()->back();
+   } 
+  }
 
 }

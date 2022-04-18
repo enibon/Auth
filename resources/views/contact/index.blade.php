@@ -11,15 +11,14 @@
 </head>
 <body>
     <div class="wrapper">
-        <header>Send us a message</header>
-        <form action="{{ route('contact.store') }}" method="POST">
-            @csrf
-             @if(Session::has('success'))
+           @if(Session::has('success'))
              <p class="alert alert-success">{{ Session::get('success') }}</p>
               @endif
               @if(Session::has('fail'))
              <p class="alert alert-danger">{{ Session::get('fail') }}</p>
               @endif
+        <form action="{{ route('contact.store') }}" method="POST">
+            @csrf
             <div class="dbl-field">
                 <div class="field">
                     <input type="text" name="name" placeholder="Enter your name">
