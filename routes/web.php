@@ -20,7 +20,10 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/register', 'registerUser')->name('register.store');
     Route::get('/login', 'login')->name('login.show');
     Route::post('/login', 'loginUser')->name('login.signup');
+    Route::get('/logout', 'logOut')->name('logout.user'); 
 });
 
+
+Route::get('/dashboard', [ContactController::class, 'dashboard'])->name('home');
 Route::get('/', [ContactController::class, 'contact'])->name('contact.show');
 Route::POST('/contact', [ContactController::class, 'store'])->name('contact.store');
