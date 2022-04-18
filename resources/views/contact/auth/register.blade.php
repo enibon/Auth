@@ -11,17 +11,17 @@
 
     <form action="{{route('register.store')}}" method="POST">
         @csrf
-    <label>სახელი</label>
-     <input type="text" placeholder="შეიყვანეთ სახელი" name="name">
-     <br>
      <label>ელ-ფოსტა</label>
      <input type="text" placeholder="შეიყვანეთ ელ-ფოსტა" name="email">
      <br>
+     <label>ტელეფონი</label>
+     <input type="text" placeholder="შეიყვანეთ ტელეფონი" name="phone">
+     <br>
      <label>პაროლი</label>
-     <input type="text" placeholder="შეიყვანეთ პაროლი" name="password">
+     <input type="password" placeholder="შეიყვანეთ პაროლი" name="password">
      <br>
      <label>გაიმეორეთ პაროლი</label>
-     <input type="text" placeholder="გაიმეორეთ პაროლი" name="repeat_password">
+     <input type="password" placeholder="გაიმეორეთ პაროლი" name="repeat_password">
      <br>
      <br>
      <button type="submit">რეგისტრაცია</button>
