@@ -9,9 +9,15 @@
         @csrf
      <label>ელ-ფოსტა</label>
      <input type="text" placeholder="შეიყვანეთ ელ-ფოსტა" name="email">
+     @if($errors->has('email'))
+    <div class="error">{{ $errors->first('email') }}</div>
+      @endif
      <br>
      <label>პაროლი</label>
-     <input type="text" placeholder="შეიყვანეთ პაროლი" name="password">
+     <input type="password" placeholder="შეიყვანეთ პაროლი" name="password">
+     @if($errors->has('password'))
+    <div class="error">{{ $errors->first('password') }}</div>
+      @endif
      <br>
      <br>
      <button type="submit">შესვლა</button>

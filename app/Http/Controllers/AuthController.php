@@ -22,9 +22,13 @@ class AuthController extends Controller
 
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users',
-            'phone' => 'required|numeric|max:9',
+            'phone' => 'required|numeric',
             'password' => 'required|confirmed',
       ]);
+
+      if($validator->fails()) {
+        return redirect()->back()->withErrors($validator);
+    }
 
       $user = User::create([
 
@@ -36,8 +40,6 @@ class AuthController extends Controller
 
       if(!$user){
           session()->flash('fail', 'გთხოვთ თავიდან სცადოთ');
-      }else{
-          session()->flash('success', 'თქვენ წარმატებით დარეგისტრირდით');
       }
         return redirect()->route('login.show');
     }
@@ -52,7 +54,7 @@ class AuthController extends Controller
         
         auth()->login($user);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
 
     }
 
